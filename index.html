@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Singapore Flat Price Explorer</title>
+    <meta name="description" content="Interactive HDB resale flat price explorer with monthly price trend charts, town features, and real-time data.gov.sg integration." />
+    <meta property="og:title" content="Singapore Flat Price Explorer" />
+    <meta property="og:description" content="Interactive HDB resale flat price explorer with monthly price trend charts, town features, and real-time data.gov.sg integration." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script>
+      // Suppress Vite HMR WebSocket connection errors in environments where HMR is disabled
+      window.addEventListener('unhandledrejection', function(event) {
+        if (event && event.reason) {
+          const msg = String(event.reason.message || event.reason.stack || event.reason || '');
+          if (msg.includes('WebSocket') || msg.includes('createWebSocketModuleRunnerTransport') || msg.includes('vite-hmr')) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }
+      }, true);
+      window.addEventListener('error', function(event) {
+        if (event) {
+          const msg = String(event.message || '');
+          const filename = String(event.filename || '');
+          const stack = String(event.error && event.error.stack ? event.error.stack : '');
+          if (msg.includes('WebSocket') || filename.includes('@vite/client') || stack.includes('createWebSocketModuleRunnerTransport')) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            return true;
+          }
+        }
+      }, true);
+    </script>
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-rose-500/20 selection:text-rose-200 min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
